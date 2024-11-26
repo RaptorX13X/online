@@ -6,36 +6,26 @@ using Fusion;
 public class Player : NetworkBehaviour
 {
     private NetworkCharacterController _cc;
-    [SerializeField] private Ball _prefabBall;
-    private Vector3 _forward = Vector3.forward;
-    [Networked] private TickTimer delay {get; set;}
+    private float velocity;
+    private float angle;
+    [SerializeField] private float maxVelocity;
     private void Awake()
     {
         _cc = GetComponent<NetworkCharacterController>();
     }
 
     public override void FixedUpdateNetwork()
-    {
+    {   
         if (GetInput(out NetworkInputData data))
         {
-            data.direction.Normalize();
-            _cc.Move(5*data.direction*Runner.DeltaTime);
+            velocity += data.velocity;
+            angle += data.angle;
+            velocity = Mathf.Clamp(velocity, 0, maxVelocity);
             
-            if (data.direction.sqrMagnitude > 0)
-                _forward = data.direction;
-            if (HasStateAuthority && delay.ExpiredOrNotRunning(Runner))
-            {
-                if (data.buttons.IsSet(NetworkInputData.MOUSEBUTTON0))
-                {
-                    delay = TickTimer.CreateFromSeconds(Runner, 0.5f);
-                    Runner.Spawn(_prefabBall,
-                        transform.position+_forward, Quaternion.LookRotation(_forward),
-                        Object.InputAuthority, (runner, o) =>
-                    {
-                        o.GetComponent<Ball>().Init();
-                    });
-                }
-            }
+            _cc.gameObject.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + angle, transform.rotation.z);
         }
+        Debug.Log(velocity);
+        if (velocity > 0f)
+            _cc.Move(transform.forward * velocity * Runner.DeltaTime);
     }
 }
