@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Fusion;
 using Fusion.Sockets;
+using Timer = Unity.VisualScripting.Timer;
 
 public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 {
@@ -71,32 +72,28 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         }
     }
 
-    private bool _mouseButton0;
-
-    private void Update()
-    {
-        _mouseButton0 = _mouseButton0 | Input.GetMouseButton(0);
-    }
-    
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
         var data = new NetworkInputData();
 
         if (Input.GetKey(KeyCode.W))
-            data.direction += Vector3.forward;
+        {
+            data.velocity += 100f;
+        }
+        else
+        {
+            data.velocity -= 100f;
+        }
 
         if (Input.GetKey(KeyCode.S))
-            data.direction += Vector3.back;
+            data.velocity -= 100f;
 
         if (Input.GetKey(KeyCode.A))
-            data.direction += Vector3.left;
+            data.angle += -1f;
 
         if (Input.GetKey(KeyCode.D))
-            data.direction += Vector3.right;
+            data.angle += 1f;
         
-        data.buttons.Set(NetworkInputData.MOUSEBUTTON0, _mouseButton0);
-        _mouseButton0 = false;
-
         input.Set(data);
     }
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input) { }
