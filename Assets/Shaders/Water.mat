@@ -38,13 +38,19 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Absorption_Coefficient: 0
-    - _Depth: 0
+    - _Absorption_Coefficient: 0.96
+    - _Alpha: 1
+    - _Depth: 4.01
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _ReflectionScale: 0
+    - _ReflectionSpeed: 0.5
+    - _ReflectionStrenght: 0
     m_Colors:
-    - _Absorption_Color: {r: 0.18661162, g: 0.4792453, b: 0.13653971, a: 0}
-    - _Water_Color: {r: 0.39761475, g: 0.82641506, b: 0.82186675, a: 0}
+    - _Absorption_Color: {r: 0.46794587, g: 0.6660484, b: 0.86415094, a: 0}
+    - _DeepWater: {r: 0.051683832, g: 0.09539927, b: 0.23018861, a: 1}
+    - _ShallowWater: {r: 0.31193307, g: 0.720371, b: 0.7283019, a: 1}
+    - _Water_Color: {r: 0.3723958, g: 0.7283019, b: 0.7283019, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &6640974687516707383
 MonoBehaviour:
