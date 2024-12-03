@@ -194,5 +194,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736f9c97707d56749a3f06942b3bf8e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabBall: {fileID: -8024320616709143941, guid: b266311c51d47d542ba67aa04ce95856,
-    type: 3}
+  angleMath: 1.5
