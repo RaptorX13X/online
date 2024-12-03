@@ -78,15 +78,12 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
         if (Input.GetKey(KeyCode.W))
         {
-            data.velocity += 100f;
+            data.velocity = 1f;
         }
         else
         {
-            data.velocity -= 100f;
+            data.velocity = 0f;
         }
-
-        if (Input.GetKey(KeyCode.S))
-            data.velocity -= 100f;
 
         if (Input.GetKey(KeyCode.A))
             data.angle += -1f;

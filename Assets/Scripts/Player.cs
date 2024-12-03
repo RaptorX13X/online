@@ -8,7 +8,7 @@ public class Player : NetworkBehaviour
     private NetworkCharacterController _cc;
     private float velocity;
     private float angle;
-    [SerializeField] private float maxVelocity;
+    [SerializeField]private float angleMath;
     private void Awake()
     {
         _cc = GetComponent<NetworkCharacterController>();
@@ -18,14 +18,12 @@ public class Player : NetworkBehaviour
     {   
         if (GetInput(out NetworkInputData data))
         {
-            velocity += data.velocity;
-            angle += data.angle;
-            velocity = Mathf.Clamp(velocity, 0, maxVelocity);
+            velocity = data.velocity;
+            angle += data.angle * angleMath;
             
             _cc.gameObject.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + angle, transform.rotation.z);
         }
-        Debug.Log(velocity);
         if (velocity > 0f)
-            _cc.Move(transform.forward * velocity * Runner.DeltaTime);
+            _cc.Move(transform.forward * Runner.DeltaTime);
     }
 }
