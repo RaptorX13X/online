@@ -10,12 +10,24 @@ public class Player : NetworkBehaviour
     private float angle;
     [SerializeField]private float angleMath;
     [SerializeField] private int score;
-    private int card1number = 0;
-    private int card2number = 0;
-    private int card3number = 0;
+    [SerializeField]private int card1number = 0;
+    [SerializeField]private int card2number = 0;
+    [SerializeField]private int card3number = 0;
+    [SerializeField]private bool doublePoints = false;
+    [SerializeField]private bool slowdown = false;
+
+    [SerializeField] private int pointsToSteal = 10;
+    
+    [Networked] private TickTimer doubleTimer { get; set; }
+    [Networked] private TickTimer slowTimer { get; set; }
+    [SerializeField] private float doubleTimerInterval = 10f;
+    [SerializeField] private float slowTimerInterval = 10f;
+
+    private NetworkObject networkObject;
     private void Awake()
     {
         _cc = GetComponent<NetworkCharacterController>();
+        networkObject = GetComponent<NetworkObject>();
     }
 
     public override void FixedUpdateNetwork()
@@ -23,22 +35,33 @@ public class Player : NetworkBehaviour
         if (GetInput(out NetworkInputData data))
         {
             velocity = data.velocity;
+            if (slowdown) velocity *= 0.75f;
             angle += data.angle * angleMath;
             
-            _cc.gameObject.transform.rotation = Quaternion.Euler(transform.rotation.x, transform.rotation.y + angle, transform.rotation.z);
+            _cc.gameObject.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x,  angle, transform.rotation.eulerAngles.z);
         }
         if (velocity > 0f)
             _cc.Move(transform.forward * Runner.DeltaTime);
 
         if (data.buttons.IsSet(NetworkInputData.EButton))
         {
-            Debug.Log("using card" + card1number);
+            UseCard();
         }
+        if (doubleTimer.Expired(Runner))
+        {
+            doublePoints = false;
+        }
+        
+        Debug.Log(networkObject.InputAuthority);
     }
 
     public void AddScore(int scoreToAdd)
     {
         score += scoreToAdd;
+        if (doublePoints)
+        {
+            score += scoreToAdd;
+        }
     }
 
     public void AddCard(int cardID)
@@ -84,16 +107,49 @@ public class Player : NetworkBehaviour
 
     private void Card1()
     {
-        //whatever is supposed to happen
+        doubleTimer = TickTimer.CreateFromSeconds(Runner, doubleTimerInterval);
+        doublePoints = true;
     }
 
     private void Card2()
     {
-        //again
+        if (networkObject.InputAuthority == PlayerRef.FromIndex(1))
+        {
+            Runner.GetPlayerObject(PlayerRef.FromIndex(2)).GetComponent<Player>().SlowDown();
+        }
+        else if (networkObject.InputAuthority == PlayerRef.FromIndex(2))
+        {
+            Runner.GetPlayerObject(PlayerRef.FromIndex(1)).GetComponent<Player>().SlowDown();
+        }
     }
 
     private void Card3()
     {
-        //yeah
+        StealPoints();
+    }
+
+    public void SlowDown()
+    {
+        slowTimer = TickTimer.CreateFromSeconds(Runner, slowTimerInterval);
+        slowdown = true;
+    }
+
+    private void StealPoints()
+    {
+        if (networkObject.InputAuthority == PlayerRef.FromIndex(1))
+        {
+            Runner.GetPlayerObject(PlayerRef.FromIndex(2)).GetComponent<Player>().Stolen(pointsToSteal);
+            score += pointsToSteal;
+        }
+        else if (networkObject.InputAuthority == PlayerRef.FromIndex(2))
+        {
+            Runner.GetPlayerObject(PlayerRef.FromIndex(1)).GetComponent<Player>().Stolen(pointsToSteal);
+            score += pointsToSteal;
+        }
+    }
+
+    public void Stolen(int points)
+    {
+        score -= points;
     }
 }

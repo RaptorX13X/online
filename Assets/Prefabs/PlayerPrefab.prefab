@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: b150e9fe5c0f58e4e88727f6161ea3a7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -194,4 +194,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736f9c97707d56749a3f06942b3bf8e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angleMath: 1.5
+  angleMath: 2
+  score: 0
+  card1number: 0
+  card2number: 0
+  card3number: 0
+  doublePoints: 0
+  doubleTimerInterval: 10
