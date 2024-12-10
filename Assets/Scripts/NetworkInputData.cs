@@ -5,6 +5,8 @@ using Fusion;
 
 public struct NetworkInputData : INetworkInput
 {
+    public const byte EButton = 1;
+    public NetworkButtons buttons;
     public float angle;
     public float velocity;
 }

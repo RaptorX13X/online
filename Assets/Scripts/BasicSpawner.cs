@@ -75,6 +75,13 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         }
     }
 
+    private bool buttonE = false;
+
+    private void Update()
+    {
+        buttonE = buttonE || Input.GetKeyDown(KeyCode.E);
+    }
+
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
         var data = new NetworkInputData();
@@ -93,6 +100,9 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
         if (Input.GetKey(KeyCode.D))
             data.angle += 1f;
+        
+        data.buttons.Set(NetworkInputData.EButton, buttonE);
+        buttonE = false;
         
         input.Set(data);
     }
