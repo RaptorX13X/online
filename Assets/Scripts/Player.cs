@@ -9,6 +9,7 @@ public class Player : NetworkBehaviour
     private float velocity;
     private float angle;
     [SerializeField]private float angleMath;
+    [SerializeField] private int score;
     private void Awake()
     {
         _cc = GetComponent<NetworkCharacterController>();
@@ -25,5 +26,10 @@ public class Player : NetworkBehaviour
         }
         if (velocity > 0f)
             _cc.Move(transform.forward * Runner.DeltaTime);
+    }
+
+    public void AddScore(int scoreToAdd)
+    {
+        score += scoreToAdd;
     }
 }

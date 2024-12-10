@@ -9,6 +9,8 @@ using Timer = Unity.VisualScripting.Timer;
 public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 {
     private NetworkRunner _runner;
+
+    [SerializeField] private ObjectSpawner spawner;
     
     async void StartGame(GameMode mode)
     {
@@ -31,6 +33,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
             Scene = scene,
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
         });
+        spawner.gameObject.SetActive(true);
     }
     
     private void OnGUI()
