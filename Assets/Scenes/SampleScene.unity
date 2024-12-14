@@ -1249,14 +1249,17 @@ MonoBehaviour:
     type: 3}
   bigPrefab: {fileID: 5267039000477505127, guid: e03b57557370348eaa9686a8134474c3,
     type: 3}
-  card1Prefab: {fileID: 0}
-  card2Prefab: {fileID: 0}
-  card3Prefab: {fileID: 0}
+  card1Prefab: {fileID: 1595713428316248592, guid: 5f913964fc136a1558d5e2a208029c9f,
+    type: 3}
+  card2Prefab: {fileID: 1595713428316248592, guid: b1fa12272a0c9880e835362fe068bab6,
+    type: 3}
+  card3Prefab: {fileID: 1595713428316248592, guid: 770ca255924b769359bb1c2dbb41708b,
+    type: 3}
   smallPrefabWeight: 20
   bigPrefabWeight: 10
-  card1PrefabWeight: 0
-  card2PrefabWeight: 0
-  card3PrefabWeight: 0
+  card1PrefabWeight: 10
+  card2PrefabWeight: 10
+  card3PrefabWeight: 10
 --- !u!4 &1976633982
 Transform:
   m_ObjectHideFlags: 0
