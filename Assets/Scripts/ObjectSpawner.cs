@@ -28,10 +28,10 @@ public class ObjectSpawner : NetworkBehaviour
     private int chosenIndex;
     private GameObject chosenObject;
 
-    // private void Start() // powinno iść na on player joined czy cos
-    // {
-    //     Spawn();
-    // }
+    private void Start() // powinno iść na on player joined czy cos
+    {
+        spawnTimer = TickTimer.CreateFromSeconds(Runner, 5.0f);
+    }
 
     public override void FixedUpdateNetwork()
     {
