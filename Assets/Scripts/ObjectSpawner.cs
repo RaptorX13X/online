@@ -28,10 +28,10 @@ public class ObjectSpawner : NetworkBehaviour
     private int chosenIndex;
     private GameObject chosenObject;
 
-    private void Start() // powinno iść na on player joined czy cos
-    {
-        Spawn();
-    }
+    // private void Start() // powinno iść na on player joined czy cos
+    // {
+    //     Spawn();
+    // }
 
     public override void FixedUpdateNetwork()
     {
@@ -41,7 +41,7 @@ public class ObjectSpawner : NetworkBehaviour
         }
     }
 
-    private void Spawn()
+    public void Spawn()
     {
         RandomizeObject();
         Runner.Spawn(chosenObject,

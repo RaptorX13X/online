@@ -34,6 +34,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
         });
         spawner.gameObject.SetActive(true);
+        spawner.Spawn();
     }
     
     private void OnGUI()

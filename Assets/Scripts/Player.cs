@@ -35,7 +35,7 @@ public class Player : NetworkBehaviour
         if (GetInput(out NetworkInputData data))
         {
             velocity = data.velocity;
-            if (slowdown) velocity *= 0.75f;
+            if (slowdown) velocity *= 0.5f;
             angle += data.angle * angleMath;
             
             _cc.gameObject.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x,  angle, transform.rotation.eulerAngles.z);
