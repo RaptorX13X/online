@@ -545,7 +545,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 740145749}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 880ba83264cdad1fd94472a581e428ba, type: 3}
   m_Name: 
@@ -567,11 +567,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 80, y: 1, z: 1.5}
+  m_Size: {x: 80, y: 2, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:
@@ -778,7 +778,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1080522763}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 880ba83264cdad1fd94472a581e428ba, type: 3}
   m_Name: 
@@ -800,11 +800,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 80, y: 1, z: 1.5}
+  m_Size: {x: 80, y: 2, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1788233501
 GameObject:
@@ -865,7 +865,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788233501}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 880ba83264cdad1fd94472a581e428ba, type: 3}
   m_Name: 
@@ -887,11 +887,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5, y: 1, z: 45}
+  m_Size: {x: 3, y: 2, z: 45}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1896785353
 GameObject:
@@ -1058,7 +1058,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949702684}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 880ba83264cdad1fd94472a581e428ba, type: 3}
   m_Name: 
@@ -1080,11 +1080,11 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5, y: 1, z: 45}
+  m_Size: {x: 3, y: 2, z: 45}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1964602097
 GameObject:
@@ -1253,13 +1253,10 @@ MonoBehaviour:
     type: 3}
   card2Prefab: {fileID: 1595713428316248592, guid: b1fa12272a0c9880e835362fe068bab6,
     type: 3}
-  card3Prefab: {fileID: 1595713428316248592, guid: 770ca255924b769359bb1c2dbb41708b,
-    type: 3}
   smallPrefabWeight: 20
   bigPrefabWeight: 10
   card1PrefabWeight: 10
   card2PrefabWeight: 10
-  card3PrefabWeight: 10
 --- !u!4 &1976633982
 Transform:
   m_ObjectHideFlags: 0

@@ -18,12 +18,10 @@ public class ObjectSpawner : NetworkBehaviour
     [SerializeField] private GameObject bigPrefab;
     [SerializeField] private GameObject card1Prefab;
     [SerializeField] private GameObject card2Prefab;
-    [SerializeField] private GameObject card3Prefab;
     [SerializeField] private int smallPrefabWeight;
     [SerializeField] private int bigPrefabWeight;
     [SerializeField] private int card1PrefabWeight;
     [SerializeField] private int card2PrefabWeight;
-    [SerializeField] private int card3PrefabWeight;
     private int randomWeight;
     private int chosenIndex;
     private GameObject chosenObject;
@@ -52,7 +50,7 @@ public class ObjectSpawner : NetworkBehaviour
 
     private void RandomizeObject()
     {
-        randomWeight = smallPrefabWeight + bigPrefabWeight + card1PrefabWeight + card2PrefabWeight + card3PrefabWeight + 1;
+        randomWeight = smallPrefabWeight + bigPrefabWeight + card1PrefabWeight + card2PrefabWeight + 1;
         chosenIndex = Random.Range(0, randomWeight);
         int smaller1 = smallPrefabWeight;
         int bigger2 = smallPrefabWeight;
@@ -61,8 +59,6 @@ public class ObjectSpawner : NetworkBehaviour
         int smaller3 = smallPrefabWeight + bigPrefabWeight + card1PrefabWeight;
         int bigger4 = smallPrefabWeight + bigPrefabWeight + card1PrefabWeight;
         int smaller4 = smallPrefabWeight + bigPrefabWeight + card1PrefabWeight + card2PrefabWeight;
-        int bigger5 = smallPrefabWeight + bigPrefabWeight + card1PrefabWeight + card2PrefabWeight;
-        int smaller5 = smallPrefabWeight + bigPrefabWeight + card1PrefabWeight + card2PrefabWeight + card3PrefabWeight;
         
         if (chosenIndex <= smaller1)
         {
@@ -79,10 +75,6 @@ public class ObjectSpawner : NetworkBehaviour
         else if (chosenIndex > bigger4 && chosenIndex <= smaller4)
         {
             chosenObject = card2Prefab;
-        }
-        else if (chosenIndex > bigger5 && chosenIndex <= smaller5)
-        {
-            chosenObject = card3Prefab;
         }
     }
 }
