@@ -34,6 +34,7 @@ public class Player : NetworkBehaviour
 
     [SerializeField] private Sprite card1Sprite;
     [SerializeField] private Sprite card2Sprite;
+    [SerializeField] private Sprite emptySprite;
 
     private NetworkObject networkObject;
     private void Awake()
@@ -132,7 +133,7 @@ public class Player : NetworkBehaviour
             Card2();
         // else if (card1number == 3) 
         //     Card3();
-        card1Image.sprite = null;
+        card1Image.sprite = emptySprite;
         card1number = 0;
         if (card2number != 0)
         {
@@ -145,12 +146,12 @@ public class Player : NetworkBehaviour
             card2number = card3number;
             card2Image.sprite = card3Image.sprite;
             card3number = 0;
-            card3Image.sprite = null;
+            card3Image.sprite = emptySprite;
         }
         else
         {
             card2number = 0;
-            card2Image.sprite = null;
+            card2Image.sprite = emptySprite;
         }
     }
 
