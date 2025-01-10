@@ -36,6 +36,8 @@ public class Player : NetworkBehaviour
     [SerializeField] private Sprite card2Sprite;
     [SerializeField] private Sprite emptySprite;
 
+    [SerializeField] private GameObject UI;
+
     private NetworkObject networkObject;
     private void Awake()
     {
@@ -60,6 +62,15 @@ public class Player : NetworkBehaviour
             angle += data.angle * angleMath;
             
             _cc.gameObject.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x,  angle, transform.rotation.eulerAngles.z);
+        }
+
+        if (data.buttons.IsSet(NetworkInputData.PButton) && !UI.activeSelf)
+        {
+            UI.SetActive(true);
+        }
+        else if (data.buttons.IsSet(NetworkInputData.PButton) && UI.activeSelf)
+        {
+            UI.SetActive(false);
         }
         if (velocity > 0f)
             _cc.Move(transform.forward * Runner.DeltaTime);

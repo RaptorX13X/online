@@ -76,10 +76,12 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     }
 
     private bool buttonE = false;
+    private bool buttonR = false;
 
     private void Update()
     {
         buttonE = buttonE || Input.GetKeyDown(KeyCode.E);
+        buttonR = buttonR || Input.GetKeyDown(KeyCode.R);
     }
 
     public void OnInput(NetworkRunner runner, NetworkInput input)

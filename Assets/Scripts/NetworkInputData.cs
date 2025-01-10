@@ -9,4 +9,5 @@ public struct NetworkInputData : INetworkInput
     public NetworkButtons buttons;
     public float angle;
     public float velocity;
+    public const byte PButton = 2;
 }
