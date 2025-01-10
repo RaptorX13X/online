@@ -54,9 +54,9 @@ Material:
     - _RippleSlimness: 4
     - _Ripple_Speed: 4
     - _WaterDepth: 2.5
-    - _WaveNoise: 0.92
-    - _WaveScale: 0.11
-    - _WaveSpeed: 0.15
+    - _WaveNoise: 0
+    - _WaveScale: 0
+    - _WaveSpeed: 0
     m_Colors:
     - _Absorption_Color: {r: 0.46794587, g: 0.6660484, b: 0.86415094, a: 0}
     - _DeepWater: {r: 0.10301882, g: 0.29439765, b: 0.3433962, a: 1}
